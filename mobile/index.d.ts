@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ViewStyle } from 'react-native';
 interface Side extends React.ReactElement {
 }
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
         right: Side;
         left: Side;
     };
+    style: ViewStyle;
 }
 export default function BorderLayout(props: Props): React.ReactElement;
 export {};

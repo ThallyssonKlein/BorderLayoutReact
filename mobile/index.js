@@ -35,11 +35,11 @@ var styles = reactNative.StyleSheet.create({
     }
 });
 function BorderLayout(props) {
-    return (React.createElement(reactNative.View, { style: styles.parent },
+    return (React.createElement(reactNative.View, { style: reactNative.StyleSheet.flatten([props.style, styles.parent]) },
         props.children.top,
-        React.createElement(reactNative.View, { style: styles.center },
+        React.createElement(reactNative.View, { style: reactNative.StyleSheet.flatten([styles.center, props.style]) },
             props.children.left,
-            React.createElement(reactNative.View, { style: { flex: 1 } }, props.children.center),
+            React.createElement(reactNative.View, { style: reactNative.StyleSheet.flatten([{ flex: 1 }, props.style]) }, props.children.center),
             props.children.right),
         props.children.bottom));
 }
