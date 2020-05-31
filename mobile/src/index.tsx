@@ -32,11 +32,11 @@ const styles = StyleSheet.create({
 
 export default function BorderLayout(props: Props): React.ReactElement {
     return (
-        <View style={StyleSheet.flatten([props.style, styles.parent])}>
+        <View style={[styles.parent,props.style]}>
             {props.children.top}
-            <View style={StyleSheet.flatten([styles.center, props.style])}>
+            <View style={styles.center}>
                 {props.children.left}
-                <View style={StyleSheet.flatten([{flex: 1}, props.style])}>
+                <View style={{flex: 1}}>
                     {props.children.center}
                 </View>
                 {props.children.right}
