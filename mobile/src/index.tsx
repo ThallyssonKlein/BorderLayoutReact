@@ -33,15 +33,15 @@ const styles = StyleSheet.create({
 export default function BorderLayout(props: Props): React.ReactElement {
     return (
         <View style={[styles.parent,props.style]}>
-            {props.children.top}
+            {(props.children.top) ? props.children.top : <View/>}
             <View style={styles.center}>
-                {props.children.left}
-                <View style={{flex: 1}}>
+                {(props.children.left) ? props.children.left : <View/>}
+                <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
                     {props.children.center}
                 </View>
-                {props.children.right}
+                {(props.children.right) ? props.children.right : <View/>}
             </View>
-            {props.children.bottom}
+            {(props.children.bottom) ? props.children.bottom : <View/>}
         </View>
     )
 }
