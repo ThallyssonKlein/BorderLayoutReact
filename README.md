@@ -21,6 +21,7 @@ React Native
     }}
 </BorderLayout>
 ```
+React
 ```
 <BorderLayout>
     {{
@@ -37,3 +38,21 @@ React Native
 
 Screen Divisions looks like this:
 ![alt](https://raw.githubusercontent.com/ThallyssonKlein/BorderLayoutReact/master/screenshot.png)
+
+# Update
+
+A new way to use:
+
+```
+<BorderLayout backgroundColor={Colors.primaryShade3}>
+    <BorderLayout.Top>
+        ....
+    </BorderLayout.Top>
+    <BorderLayout.Center>
+    ....
+    </BorderLayout.Center>
+    <BorderLayout.Bottom>
+        ....
+    </BorderLayout.Bottom>
+</BorderLayout> 
+```

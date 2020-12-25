@@ -1,49 +1,62 @@
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
 
-
-function ___$insertStyle(css) {
-  if (!css) {
-    return;
+const styles = StyleSheet.create({
+  parent: {
+      flex: 1,
+      margin: 0,
+      display: 'flex',
+      flexDirection: 'column'
+  },
+  center: {
+      flex:1,
+      display: 'flex',
+      flexDirection: 'row'
   }
-  if (typeof window === 'undefined') {
-    return;
-  }
-
-  var style = document.createElement('style');
-
-  style.setAttribute('type', 'text/css');
-  style.innerHTML = css;
-  document.head.appendChild(style);
-  return css;
-}
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-var React = require('react');
-var reactNative = require('react-native');
-
-var styles = reactNative.StyleSheet.create({
-    parent: {
-        flex: 1,
-        margin: 0,
-        display: 'flex',
-        flexDirection: 'column'
-    },
-    center: {
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'row'
-    }
 });
-function BorderLayout(props) {
-    return (React.createElement(reactNative.View, { style: [styles.parent, props.style] },
-        (props.children.top) ? props.children.top : React.createElement(reactNative.View, null),
-        React.createElement(reactNative.View, { style: styles.center },
-            (props.children.left) ? props.children.left : React.createElement(reactNative.View, null),
-            React.createElement(reactNative.View, { style: { flex: 1, justifyContent: "center", alignItems: "center" } },
-                React.createElement(reactNative.View, { style: { flex: 1, justifyContent: "center", alignItems: "center" } }, props.children.center)),
-            (props.children.right) ? props.children.right : React.createElement(reactNative.View, null)),
-        (props.children.bottom) ? props.children.bottom : React.createElement(reactNative.View, null)));
+const BorderLayout = props => {
+  const top = React.Children.map(props.children, child => child.type.displayName === 'Top' ? child : null);
+  const center = React.Children.map(props.children, child => child.type.displayName === 'Center' ? child : null);
+  const bottom = React.Children.map(props.children, child => child.type.displayName === 'Bottom' ? child : null);
+  const left = React.Children.map(props.children, child => child.type.displayName === 'Left' ? child : null);
+  const right = React.Children.map(props.children, child => child.type.displayName === 'Right' ? child : null);
+
+  let additionalStyles = {};
+  if(props.additionalStyles){
+      additionalStyles = {...props.additionalStyles}
+  }
+
+  return <View style={[styles.parent, {backgroundColor : props.backgroundColor ? props.backgroundColor : ""}, additionalStyles]}>
+            {(top) ? top : <View/>}
+            <View style={styles.center}>
+                {(left) ? left : <View/>}
+                <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
+                    {center && center}
+                </View>
+                {(right) ? right : <View/>}
+            </View>
+            {(bottom) ? bottom : <View/>}
+            </View>
 }
 
-exports.default = BorderLayout;
-//# sourceMappingURL=index.js.map
+const Top = ({ children }) => children;
+Top.displayName = 'Top';
+BorderLayout.Top = Top;
+
+const Center = ({ children }) => children;
+Center.displayName = 'Center';
+BorderLayout.Center = Center;
+
+const Bottom = ({ children }) => children;
+Bottom.displayName = 'Bottom';
+BorderLayout.Bottom = Bottom;
+
+const Left = ({ children }) => children;
+Left.displayName = 'Left';
+BorderLayout.Left = Left;
+
+const Right = ({ children }) => children;
+Right.displayName = 'Right';
+BorderLayout.Right = Right;
+
+export default BorderLayout;

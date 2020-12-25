@@ -1,47 +1,56 @@
+import React from 'react';
 
-
-function ___$insertStyle(css) {
-  if (!css) {
-    return;
+const styles = {
+  parent: {
+      flex: 1,
+      margin: 0,
+      display: 'flex',
+      flexDirection: 'column'
+  },
+  center: {
+      flex:1,
+      display: 'flex',
+      flexDirection: 'row'
   }
-  if (typeof window === 'undefined') {
-    return;
-  }
-
-  var style = document.createElement('style');
-
-  style.setAttribute('type', 'text/css');
-  style.innerHTML = css;
-  document.head.appendChild(style);
-  return css;
-}
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-var React = require('react');
-
-var styles = {
-    parent: {
-        height: '100vh',
-        margin: 0,
-        display: 'flex',
-        flexDirection: 'column'
-    },
-    center: {
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'row'
-    }
 };
-function BorderLayout(props) {
-    return (React.createElement("div", { style: styles.parent },
-        props.children.top,
-        React.createElement("div", { style: styles.center },
-            props.children.left,
-            React.createElement("div", { style: { flex: 1 } }, props.children.center),
-            props.children.right),
-        props.children.bottom));
+const BorderLayout = props => {
+  const top = React.Children.map(props.children, child => child.type.displayName === 'Top' ? child : null);
+  const center = React.Children.map(props.children, child => child.type.displayName === 'Center' ? child : null);
+  const bottom = React.Children.map(props.children, child => child.type.displayName === 'Bottom' ? child : null);
+  const left = React.Children.map(props.children, child => child.type.displayName === 'Left' ? child : null);
+  const right = React.Children.map(props.children, child => child.type.displayName === 'Right' ? child : null);
+
+  return <div style={[styles.parent, {backgroundColor : props.backgroundColor ? props.backgroundColor : ""}]}>
+            {(top) ? top : <div/>}
+            <div style={styles.center}>
+                {(left) ? left : <div/>}
+                <div style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
+                    {center && center}
+                </div>
+                {(right) ? right : <div/>}
+            </div>
+            {(bottom) ? bottom : <div/>}
+            </div>
 }
 
-exports.default = BorderLayout;
-//# sourceMappingURL=index.js.map
+const Top = ({ children }) => children;
+Top.displayName = 'Top';
+BorderLayout.Top = Top;
+
+const Center = ({ children }) => children;
+Center.displayName = 'Center';
+BorderLayout.Center = Center;
+
+const Bottom = ({ children }) => children;
+Bottom.displayName = 'Bottom';
+BorderLayout.Bottom = Bottom;
+
+const Left = ({ children }) => children;
+Left.displayName = 'Left';
+BorderLayout.Left = Left;
+
+const Right = ({ children }) => children;
+Right.displayName = 'Right';
+BorderLayout.Right = Right;
+
+export default BorderLayout;
