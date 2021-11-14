@@ -13,6 +13,7 @@ const styles = {
       flexDirection: 'row'
   }
 };
+
 const BorderLayout = props => {
   const top = React.Children.map(props.children, child => child.type.displayName === 'Top' ? child : null);
   const center = React.Children.map(props.children, child => child.type.displayName === 'Center' ? child : null);
@@ -20,7 +21,12 @@ const BorderLayout = props => {
   const left = React.Children.map(props.children, child => child.type.displayName === 'Left' ? child : null);
   const right = React.Children.map(props.children, child => child.type.displayName === 'Right' ? child : null);
 
-  return <div style={[styles.parent, {backgroundColor : props.backgroundColor ? props.backgroundColor : ""}]}>
+  let additionalStyles = {};
+  if(props.additionalStyles){
+      additionalStyles = {...props.additionalStyles}
+  }
+
+  return <div style={[styles.parent, {backgroundColor : props.backgroundColor ? props.backgroundColor : ""}, additionalStyles]}>
             {(top) ? top : <div/>}
             <div style={styles.center}>
                 {(left) ? left : <div/>}
