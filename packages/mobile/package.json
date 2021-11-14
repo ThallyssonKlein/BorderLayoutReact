@@ -1,5 +1,5 @@
 {
-  "name": "@thallyssonklein/borderlayout-react-native",
+  "name": "@Smartial-Team/borderlayout-react-native",
   "version": "1.0.0",
   "description": "I hate lose time positioning elements on screen.....",
   "main": "index.js",
@@ -16,7 +16,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/thallyssonklein/BorderLayoutReact.git",
+    "url": "git://github.com/Smartial-Team/BorderLayoutReact.git",
     "directory": "packages/mobile"
-  }
+  },
+  "gitHead": "3dcdd7d7424a0d257bf6410ffcacf83050544dae"
 }
