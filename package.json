@@ -1,5 +1,5 @@
 {
-    "name": "@smartialteam/npm-packages",
+    "name": "@thallyssonklein/npm-packages",
     "publishConfig": {
       "access": "public"
     },
