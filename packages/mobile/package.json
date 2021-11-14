@@ -1,26 +1,22 @@
 {
-  "name": "@thallyssonklein/border-layout",
-  "version": "1.0.3",
+  "name": "@thallyssonklein/borderlayout-react-native",
+  "version": "1.0.0",
   "description": "I hate lose time positioning elements on screen.....",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "https://github.com/thallyssonklein",
   "license": "MIT",
   "peerDependencies": {
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
+    "react-native": "0.62.2"
   },
-  "files": [
-    "dist"
-  ],
   "publishConfig": {
+    "access": "public",
     "registry": "https://npm.pkg.github.com/"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ThallyssonKlein/BorderLayoutReact.git",
-    "directory": "mobile/"
+    "url": "git://github.com/thallyssonklein/BorderLayoutReact.git",
+    "directory": "packages/mobile"
   }
 }

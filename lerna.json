@@ -1,0 +1,11 @@
+{
+    "packages": ["packages/*"],
+    "command": {
+      "publish": {
+        "message": "release: publish",
+        "registry": "https://npm.pkg.github.com"
+      }
+    },
+    "version": "independent",
+    "npmClient": "npm"
+  }

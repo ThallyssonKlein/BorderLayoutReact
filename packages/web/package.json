@@ -1,0 +1,21 @@
+{
+  "name": "@thallyssonklein/borderlayout-react",
+  "version": "1.0.0",
+  "description": "I hate lose time positioning elements on screen.....",
+  "main": "index.js",
+  "author": "https://github.com/thallyssonklein",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thallyssonklein/BorderLayoutReact.git",
+    "directory": "packages/web"
+  }
+}
